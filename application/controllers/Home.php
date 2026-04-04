@@ -979,6 +979,11 @@ class Home extends CI_Controller
 		);
 	}
 
+	public function blogs()
+	{
+		$this->load->view('pages/blogs');
+	}
+
 	public function course_details($course_name)
 	{
 		$course_data = array();
