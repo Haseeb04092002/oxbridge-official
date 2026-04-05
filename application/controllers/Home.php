@@ -979,14 +979,37 @@ class Home extends CI_Controller
 		);
 	}
 
+	// public function blogs()
+	// {
+	// 	$this->db->select('blogs.*, media.*');
+	// 	$this->db->from('tbl_blogs as blogs');
+	// 	$this->db->join('tbl_blog_media as media', 'media.blog_id = blogs.blog_id', 'left');
+	// 	$this->db->where('blogs.is_deleted', 0);
+	// 	$this->db->order_by('blogs.blog_id', 'DESC');
+	// 	$data['blogs'] = $this->db->get()->result();
+	// 	$this->load->view('pages/blogs', $data);
+	// }
+
 	public function blogs()
 	{
-		$this->db->select('blogs.*, media.*');
-		$this->db->from('tbl_blogs as blogs');
-		$this->db->join('tbl_blog_media as media', 'media.blog_id = blogs.blog_id', 'left');
-		$this->db->where('blogs.is_deleted', 0);
-		$this->db->order_by('blogs.blog_id', 'DESC');
-		$data['blogs'] = $this->db->get()->result();
+		$this->db->from('tbl_blogs');
+		$this->db->where('is_deleted', 0);
+		$this->db->order_by('blog_id', 'DESC');
+
+		$blogs = $this->db->get()->result();
+
+		if (!empty($blogs)) {
+			foreach ($blogs as $blog) {
+
+				$this->db->where('blog_id', $blog->blog_id);
+				$media = $this->db->get('tbl_blog_media')->result();
+
+				$blog->media = $media;
+			}
+		}
+
+		$data['blogs'] = $blogs;
+
 		$this->load->view('pages/blogs', $data);
 	}
 
