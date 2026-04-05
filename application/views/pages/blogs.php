@@ -37,7 +37,8 @@
 								<div id="masonry" class="ttr-blog-grid-3 row">
 									<?php
 									foreach ($blogs as $blog) {
-
+									echo "<br>";
+									echo "<pre>";
 									print_r($blog);
 									die();
 									?>
