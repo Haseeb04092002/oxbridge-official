@@ -37,10 +37,10 @@
 								<div id="masonry" class="ttr-blog-grid-3 row">
 									<?php
 									foreach ($blogs as $blog) {
-									echo "<br>";
-									echo "<pre>";
-									print_r($blog);
-									die();
+									// echo "<br>";
+									// echo "<pre>";
+									// print_r($blog);
+									// die();
 									?>
 										<div class="post action-card col-xl-6 col-lg-6 col-md-12 col-xs-12 m-b40">
 											<div class="recent-news">
