@@ -37,10 +37,10 @@
 								<div id="masonry" class="ttr-blog-grid-3 row">
 									<?php
 									foreach ($blogs as $blog) {
-									// echo "<br>";
-									// echo "<pre>";
-									// print_r($blog);
-									// die();
+									echo "<br>";
+									echo "<pre>";
+									print_r($blog);
+									die();
 									?>
 										<div class="post action-card col-xl-6 col-lg-6 col-md-12 col-xs-12 m-b40">
 											<div class="recent-news">
@@ -50,13 +50,13 @@
 												<div class="info-bx">
 													<ul class="media-post">
 														<li><a href="#"><i class="fa fa-calendar"></i>Jan 02 2019</a></li>
-														<li><a href="#"><i class="fa fa-user"></i>By William</a></li>
+														<!-- <li><a href="#"><i class="fa fa-user"></i>By William</a></li> -->
 													</ul>
 													<h5 class="post-title"><a href="blog-details.html">This Story Behind Education Will Haunt You Forever.</a></h5>
 													<p>Knowing that, you’ve optimised your pages countless amount of times, written tons.</p>
 													<div class="post-extra">
 														<a href="#" class="btn-link">READ MORE</a>
-														<a href="#" class="comments-bx"><i class="fa fa-comments-o"></i>20 Comment</a>
+														<!-- <a href="#" class="comments-bx"><i class="fa fa-comments-o"></i>20 Comment</a> -->
 													</div>
 												</div>
 											</div>
