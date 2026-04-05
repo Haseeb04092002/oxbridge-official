@@ -37,11 +37,14 @@
 								<div id="masonry" class="ttr-blog-grid-3 row">
 									<?php
 									foreach ($blogs as $blog) {
+
+									print_r($blog);
+									die();
 									?>
 										<div class="post action-card col-xl-6 col-lg-6 col-md-12 col-xs-12 m-b40">
 											<div class="recent-news">
 												<div class="action-box">
-													<img src="<?= base_url('assets/images/blog/latest-blog/pic1.jpg') ?>" alt="">
+													<img src="<?= base_url() . $blog->image ?>" alt="">
 												</div>
 												<div class="info-bx">
 													<ul class="media-post">
