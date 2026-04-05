@@ -35,35 +35,70 @@
 							<div class="col-lg-8 col-xl-8 col-md-7">
 								<!-- blog grid -->
 								<div id="masonry" class="ttr-blog-grid-3 row">
-									<?php
-									foreach ($blogs as $blog) {
-									echo "<br>";
-									echo "<pre>";
-									print_r($blog);
-									die();
-									?>
+									<?php foreach ($blogs as $blog): ?>
+
 										<div class="post action-card col-xl-6 col-lg-6 col-md-12 col-xs-12 m-b40">
 											<div class="recent-news">
+
+												<!-- FEATURED IMAGE (FIRST IMAGE FROM MEDIA) -->
 												<div class="action-box">
-													<img src="<?= base_url() . $blog->image ?>" alt="">
+													<?php
+													$first_image = '';
+
+													if (!empty($blog->media)) {
+														foreach ($blog->media as $m) {
+															if ($m->media_file_type == 'image') {
+																$first_image = base_url($m->media_file_path . $m->media_file_name);
+																break;
+															}
+														}
+													}
+													?>
+
+													<?php if ($first_image != ''): ?>
+														<img src="<?= $first_image ?>" alt="">
+													<?php else: ?>
+														<img src="<?= base_url('uploads/no-image.png') ?>" alt="">
+													<?php endif; ?>
 												</div>
+
 												<div class="info-bx">
+
+													<!-- DATE -->
 													<ul class="media-post">
-														<li><a href="#"><i class="fa fa-calendar"></i>Jan 02 2019</a></li>
-														<!-- <li><a href="#"><i class="fa fa-user"></i>By William</a></li> -->
+														<li>
+															<a href="#">
+																<i class="fa fa-calendar"></i>
+																<?= date('d M Y', strtotime($blog->added_on)) ?>
+															</a>
+														</li>
 													</ul>
-													<h5 class="post-title"><a href="blog-details.html">This Story Behind Education Will Haunt You Forever.</a></h5>
-													<p>Knowing that, you’ve optimised your pages countless amount of times, written tons.</p>
+
+													<!-- TITLE -->
+													<h5 class="post-title">
+														<a href="<?= site_url('Home/blog_details/' . $blog->blog_id) ?>">
+															<?= $blog->title ?>
+														</a>
+													</h5>
+
+													<!-- SHORT DESCRIPTION -->
+													<p>
+														<?= substr(strip_tags($blog->short_desc), 0, 120) ?>...
+													</p>
+
+													<!-- EXTRA -->
 													<div class="post-extra">
-														<a href="#" class="btn-link">READ MORE</a>
-														<!-- <a href="#" class="comments-bx"><i class="fa fa-comments-o"></i>20 Comment</a> -->
+														<a href="<?= site_url('Home/blog_details/' . $blog->blog_id) ?>" class="btn-link">
+															READ MORE
+														</a>
 													</div>
+
 												</div>
+
 											</div>
 										</div>
-									<?php
-									}
-									?>
+
+									<?php endforeach; ?>
 								</div>
 								<!-- blog grid END -->
 								<!-- Pagination -->
