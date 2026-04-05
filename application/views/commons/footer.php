@@ -1,6 +1,6 @@
 <!-- Footer ==== -->
 <footer>
-  <div class="footer-top">
+  <div class="footer-top d-none">
     <!-- <div class="pt-exebar">
       <div class="container">
         <div class="d-flex align-items-stretch">

@@ -981,7 +981,155 @@ class Home extends CI_Controller
 
 	public function blogs()
 	{
-		$this->load->view('pages/blogs');
+		$this->db->select('blogs.*, media.*');
+		$this->db->from('tbl_blogs as blogs');
+		$this->db->join('tbl_blog_media as media', 'media.blog_id = blogs.blog_id', 'left');
+		$this->db->where('blogs.is_deleted', 0);
+		$this->db->order_by('blogs.blog_id', 'DESC');
+		$data['blogs'] = $this->db->get()->result();
+		$this->load->view('pages/blogs', $data);
+	}
+
+	public function add_blogs()
+	{
+		$this->load->view('pages/add_blogs');
+	}
+
+	public function save_blog()
+	{
+		$title      = $this->input->post('title') ?? '';
+		$category   = $this->input->post('category') ?? '';
+		$tags       = $this->input->post('tags') ?? '';
+		$author     = $this->input->post('author') ?? '';
+		$short_desc = $this->input->post('short_desc') ?? '';
+		$content    = $this->input->post('content') ?? '';
+		$added_on   = $this->input->post('added_on') ?? '';
+
+		// $featured_image = '';
+
+		// if (!empty($_FILES['image']['name'])) {
+		// 	$config['upload_path']   = './uploads/images/';
+		// 	$config['allowed_types'] = 'jpg|jpeg|png|gif';
+		// 	$config['file_name']     = time() . '_' . $_FILES['image']['name'];
+
+		// 	$this->load->library('upload', $config);
+
+		// 	if ($this->upload->do_upload('image')) {
+		// 		$upload_data = $this->upload->data();
+		// 		$featured_image = $upload_data['file_name'];
+		// 	}
+		// }
+
+		// ======================
+		// INSERT BLOG
+		// ======================
+		$data = array(
+			'title'           => $title,
+			'category'        => $category,
+			'tags'            => $tags,
+			'author'          => $author,
+			'short_desc'      => $short_desc,
+			'content'         => $content,
+			'added_on'        => $added_on,
+			'is_deleted'      => 0,
+		);
+
+		$this->db->insert('tbl_blogs', $data);
+		$blog_id = $this->db->insert_id();
+
+		// ======================
+		// MULTIPLE IMAGES UPLOAD
+		// ======================
+		if (!empty($_FILES['gallery_images']['name'][0])) {
+
+			$files = $_FILES['gallery_images'];
+			$folder = $blog_id . '_' . $title;
+			$uploadDir = FCPATH . "uploads/blogs/" . $folder . "/images/";
+			// echo "Uploaded: " . $upload_data['upload_path'] . "<br>";
+			// echo "Uploaded: " . $uploadDir;
+			// die();
+
+			if (!is_dir($uploadDir)) {
+				mkdir($uploadDir, 0777, true);
+			}
+
+			for ($i = 0; $i < count($files['name']); $i++) {
+
+				$_FILES['temp']['name']     = $files['name'][$i];
+				$_FILES['temp']['type']     = $files['type'][$i];
+				$_FILES['temp']['tmp_name'] = $files['tmp_name'][$i];
+				$_FILES['temp']['error']    = $files['error'][$i];
+				$_FILES['temp']['size']     = $files['size'][$i];
+
+				$config['upload_path']   = $uploadDir;
+				$config['allowed_types'] = '*';
+				$config['max_size'] = 999999999999;
+				$config['overwrite'] = true;
+				$config['file_name']     = time() . '_' . $files['name'][$i];
+
+				$this->upload->initialize($config);
+
+				if ($this->upload->do_upload('temp')) {
+					$upload_data = $this->upload->data();
+
+					$this->db->insert('tbl_blog_media', [
+						'blog_id' => $blog_id,
+						'media_file_name'   => $upload_data['file_name'],
+						'media_file_type'   => 'image',
+						// 'media_file_path'   => $upload_data['upload_path'],
+						'media_file_path' => "uploads/blogs/" . $folder . "/images/"
+					]);
+				}
+			}
+		}
+
+		// ======================
+		// MULTIPLE VIDEOS UPLOAD
+		// ======================
+		if (!empty($_FILES['videos']['name'][0])) {
+
+			$files = $_FILES['videos'];
+			$folder = $blog_id . '_' . $title;
+			$uploadDir = FCPATH . "uploads/blogs/" . $folder . "/videos/";
+
+			if (!is_dir($uploadDir)) {
+				mkdir($uploadDir, 0777, true);
+			}
+
+			for ($i = 0; $i < count($files['name']); $i++) {
+
+				$_FILES['temp']['name']     = $files['name'][$i];
+				$_FILES['temp']['type']     = $files['type'][$i];
+				$_FILES['temp']['tmp_name'] = $files['tmp_name'][$i];
+				$_FILES['temp']['error']    = $files['error'][$i];
+				$_FILES['temp']['size']     = $files['size'][$i];
+
+				$config['upload_path']   = $uploadDir;
+				$config['allowed_types'] = 'mp4|avi|mov|mkv';
+				$config['max_size'] = 999999999999;
+				$config['overwrite'] = true;
+				$config['file_name']     = time() . '_' . $files['name'][$i];
+
+				$this->upload->initialize($config);
+
+				if ($this->upload->do_upload('temp')) {
+					$upload_data = $this->upload->data();
+
+					$this->db->insert('tbl_blog_media', [
+						'blog_id' => $blog_id,
+						'media_file_name'   => $upload_data['file_name'],
+						'media_file_type'   => 'video',
+						// 'media_file_path'   => $upload_data['upload_path'],
+						'media_file_path' => "uploads/blogs/" . $folder . "/videos/"
+					]);
+				}
+			}
+		}
+
+		// ======================
+		// REDIRECT
+		// ======================
+		redirect('Home/blogs');
 	}
 
 	public function course_details($course_name)
@@ -1003,11 +1151,11 @@ class Home extends CI_Controller
 		$this->load->view('pages/course_details', $course_data);
 		// $this->load->view('pages/ai_for_kids');
 	}
-	
+
 	public function google_review()
 	{
 		$place_id = "ChIJadZR-addIDkRCnZXqwOjPbA";
-        redirect("https://search.google.com/local/writereview?placeid=".$place_id);
+		redirect("https://search.google.com/local/writereview?placeid=" . $place_id);
 	}
 
 	public function index()
@@ -1083,35 +1231,35 @@ class Home extends CI_Controller
 
 		redirect("https://wa.me/$number1?text=" . urlencode($message));
 	}
-	
+
 	public function send_whatsapp()
-    {
-        // Get form data
-        $name    = $this->input->post('name');
-        $phone   = $this->input->post('phone');
-        $subject = $this->input->post('subject');
-        $address = $this->input->post('address');
-        $message = $this->input->post('message');
-        
-        $admin_number = "923038708733";
+	{
+		// Get form data
+		$name    = $this->input->post('name');
+		$phone   = $this->input->post('phone');
+		$subject = $this->input->post('subject');
+		$address = $this->input->post('address');
+		$message = $this->input->post('message');
 
-        // WhatsApp Message
-        $whatsapp_message =
-            "============\n" .
-            "*Customer Message*\n" .
-            "============\n\n" .
-            "Name: $name\n" .
-            "Phone: $phone\n" .
-            "Subject: $subject\n" .
-            "Address: $address\n\n" .
-            "Message:\n$message";
+		$admin_number = "923038708733";
 
-        // Redirect to WhatsApp
-        redirect(
-            "https://wa.me/" . $admin_number .
-            "?text=" . urlencode($whatsapp_message)
-        );
-    }
+		// WhatsApp Message
+		$whatsapp_message =
+			"============\n" .
+			"*Customer Message*\n" .
+			"============\n\n" .
+			"Name: $name\n" .
+			"Phone: $phone\n" .
+			"Subject: $subject\n" .
+			"Address: $address\n\n" .
+			"Message:\n$message";
+
+		// Redirect to WhatsApp
+		redirect(
+			"https://wa.me/" . $admin_number .
+				"?text=" . urlencode($whatsapp_message)
+		);
+	}
 
 
 	public function about()
@@ -1140,7 +1288,7 @@ class Home extends CI_Controller
 	{
 		$this->load->view('pages/contact');
 	}
-	
+
 	public function gallery()
 	{
 		$this->load->view('pages/gallery');
