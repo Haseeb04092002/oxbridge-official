@@ -168,7 +168,7 @@
 											+92 314 5310786
 										</div>
 									</div>
-									<div class="widget widget_gallery gallery-grid-4">
+									<!-- <div class="widget widget_gallery gallery-grid-4">
 										<h6 class="widget-title">Our Gallery</h6>
 										<ul>
 											<li>
@@ -196,7 +196,7 @@
 												<div><a href="#"><img src="<?= base_url('assets/images/gallery/pic4.jpg') ?>" alt=""></a></div>
 											</li>
 										</ul>
-									</div>
+									</div> -->
 									<div class="widget widget_tag_cloud">
 										<h6 class="widget-title">Tags</h6>
 										<div class="tagcloud">
