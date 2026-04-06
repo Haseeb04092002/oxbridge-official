@@ -101,7 +101,7 @@
 									<?php endforeach; ?>
 								</div>
 								<!-- blog grid END -->
-								
+
 							</div>
 							<!-- left part END -->
 							<!-- Side bar start -->
@@ -123,42 +123,42 @@
 									<div class="widget recent-posts-entry">
 										<h6 class="widget-title">Recent Posts</h6>
 										<div class="widget-post-bx">
-											<div class="widget-post clearfix">
-												<div class="ttr-post-media"> <img src="<?= base_url('assets/images/blog/recent-blog/pic1.jpg') ?>" width="200" height="143" alt=""> </div>
-												<div class="ttr-post-info">
-													<div class="ttr-post-header">
-														<h6 class="post-title"><a href="blog-details.html">This Story Behind Education Will Haunt You Forever.</a></h6>
+
+											<?php foreach ($blogs as $blog): ?>
+
+												<div class="widget-post clearfix">
+													<div class="ttr-post-media">
+														<?php
+														$first_image = '';
+
+														if (!empty($blog->media)) {
+															foreach ($blog->media as $m) {
+																if ($m->media_file_type == 'image') {
+																	$first_image = base_url($m->media_file_path . $m->media_file_name);
+																	break;
+																}
+															}
+														}
+														?>
+
+														<?php if ($first_image != ''): ?>
+															<img src="<?= $first_image ?>" alt="">
+														<?php else: ?>
+															<img src="<?= base_url('uploads/no-image.png') ?>" width="200" height="143" alt="">
+														<?php endif; ?>
 													</div>
-													<ul class="media-post">
-														<li><a href="#"><i class="fa fa-calendar"></i>Oct 23 2019</a></li>
-														<li><a href="#"><i class="fa fa-comments-o"></i>15 Comment</a></li>
-													</ul>
-												</div>
-											</div>
-											<div class="widget-post clearfix">
-												<div class="ttr-post-media"> <img src="<?= base_url('assets/images/blog/recent-blog/pic2.jpg') ?>" width="200" height="160" alt=""> </div>
-												<div class="ttr-post-info">
-													<div class="ttr-post-header">
-														<h6 class="post-title"><a href="blog-details.html">What Will Education Be Like In The Next 50 Years?</a></h6>
+													<div class="ttr-post-info">
+														<div class="ttr-post-header">
+															<h6 class="post-title"><a href="blog-details.html"><?= $blog->title ?></a></h6>
+														</div>
+														<ul class="media-post">
+															<li><a href="#"><i class="fa fa-calendar"></i><?= date('d M Y', strtotime($blog->added_on)) ?></a></li>
+														</ul>
 													</div>
-													<ul class="media-post">
-														<li><a href="#"><i class="fa fa-calendar"></i>May 14 2019</a></li>
-														<li><a href="#"><i class="fa fa-comments-o"></i>23 Comment</a></li>
-													</ul>
 												</div>
-											</div>
-											<div class="widget-post clearfix">
-												<div class="ttr-post-media"> <img src="<?= base_url('assets/images/blog/recent-blog/pic3.jpg') ?>" width="200" height="160" alt=""> </div>
-												<div class="ttr-post-info">
-													<div class="ttr-post-header">
-														<h6 class="post-title"><a href="blog-details.html">Eliminate Your Fears And Doubts About Education.</a></h6>
-													</div>
-													<ul class="media-post">
-														<li><a href="#"><i class="fa fa-calendar"></i>June 12 2019</a></li>
-														<li><a href="#"><i class="fa fa-comments-o"></i>27 Comment</a></li>
-													</ul>
-												</div>
-											</div>
+
+											<?php endforeach; ?>
+
 										</div>
 									</div>
 									<div class="widget widget-newslatter">
