@@ -101,17 +101,7 @@
 									<?php endforeach; ?>
 								</div>
 								<!-- blog grid END -->
-								<!-- Pagination -->
-								<div class="pagination-bx rounded-sm gray clearfix">
-									<ul class="pagination">
-										<li class="previous"><a href="#"><i class="ti-arrow-left"></i> Prev</a></li>
-										<li class="active"><a href="#">1</a></li>
-										<li><a href="#">2</a></li>
-										<li><a href="#">3</a></li>
-										<li class="next"><a href="#">Next <i class="ti-arrow-right"></i></a></li>
-									</ul>
-								</div>
-								<!-- Pagination END -->
+								
 							</div>
 							<!-- left part END -->
 							<!-- Side bar start -->
@@ -174,16 +164,8 @@
 									<div class="widget widget-newslatter">
 										<h6 class="widget-title">Newsletter</h6>
 										<div class="news-box">
-											<p>Enter your e-mail and subscribe to our newsletter.</p>
-											<form class="subscription-form" action="http://educhamp.themetrades.com/demo/assets/script/mailchamp.php" method="post">
-												<div class="ajax-message"></div>
-												<div class="input-group">
-													<input name="dzEmail" required="required" type="email" class="form-control" placeholder="Your Email Address" />
-													<button name="submit" value="Submit" type="submit" class="btn black radius-no">
-														<i class="fa fa-paper-plane-o"></i>
-													</button>
-												</div>
-											</form>
+											<p>Contact Us on Whatsapp.</p>
+											+92 314 5310786
 										</div>
 									</div>
 									<div class="widget widget_gallery gallery-grid-4">
