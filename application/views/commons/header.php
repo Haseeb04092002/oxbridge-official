@@ -67,6 +67,10 @@
                         <li>
                             <a target="_blank" href="<?= base_url('Home/google_review'); ?>">Rate Us</a>
                         </li>
+
+                        <li>
+                            <a href="<?= base_url('Home/blogs'); ?>">Blogs</a>
+                        </li>
                         
                         <li>
                             <a href="<?= base_url('Home/contact'); ?>">Contact</a>
