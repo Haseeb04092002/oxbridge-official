@@ -1171,7 +1171,7 @@ class Home extends CI_Controller
 
 			$blog->media = $media;
 
-			$data['blog'] = $blog;
+			$data['blogs'] = $blog;
 
 			$this->load->view('pages/blog-details', $data);
 		} else {
