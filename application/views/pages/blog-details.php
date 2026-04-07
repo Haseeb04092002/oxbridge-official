@@ -207,7 +207,7 @@
 										<h6 class="widget-title">Recent Posts</h6>
 										<div class="widget-post-bx">
 
-											<?php foreach ($blogs as $blog): ?>
+											<?php foreach ([$blogs] as $blog): ?>
 
 												<div class="widget-post clearfix">
 													<div class="ttr-post-media">
