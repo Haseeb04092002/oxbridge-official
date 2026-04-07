@@ -57,7 +57,7 @@
 													<?php if ($first_image != ''): ?>
 														<img src="<?= $first_image ?>" alt="">
 													<?php else: ?>
-														<img src="<?= base_url('uploads/no-image.png') ?>" class="img-fluid w-100" style="height:150px; object-fit:cover;" alt="">
+														<img src="<?= base_url('uploads/no-image.png') ?>" class="img-fluid w-100" style="height:300px; object-fit:cover;" alt="">
 													<?php endif; ?>
 												</div>
 
@@ -143,7 +143,7 @@
 														<?php if ($first_image != ''): ?>
 															<img src="<?= $first_image ?>" alt="">
 														<?php else: ?>
-															<img src="<?= base_url('uploads/no-image.png') ?>" width="200" height="143" alt="">
+															<img src="<?= base_url('uploads/no-image.png') ?>" width="200" class="img-fluid w-100" style="height:150px; object-fit:cover;" alt="">
 														<?php endif; ?>
 													</div>
 													<div class="ttr-post-info">
