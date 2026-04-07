@@ -39,10 +39,10 @@
 									</div>
 									<div class="info-bx">
 										<ul class="media-post">
-											<li><i class="fa fa-calendar"></i><?= date('d M Y', strtotime($blog->added_on)) ?></li>
+											<li><i class="fa fa-calendar"></i><?= date('d M Y', strtotime($blogs->added_on)) ?></li>
 										</ul>
-										<h5 class="post-title"><?= $blog->title ?></h5>
-										<p><?= $blog->short_desc ?></p>
+										<h5 class="post-title"><?= $blogs->title ?></h5>
+										<p><?= $blogs->short_desc ?></p>
 										<div class="ttr-divider bg-gray"><i class="icon-dot c-square"></i></div>
 										<div class="widget_tag_cloud">
 											<h6>TAGS</h6>
