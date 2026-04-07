@@ -36,6 +36,24 @@
 								<div class="recent-news blog-lg">
 									<div class="action-box blog-lg">
 										<img src="assets/images/blog/default/thum1.jpg" alt="">
+										<?php
+										$first_image = '';
+
+										if (!empty($blogs->media)) {
+											foreach ($blogs->media as $m) {
+												if ($m->media_file_type == 'image') {
+													$first_image = base_url($m->media_file_path . $m->media_file_name);
+													break;
+												}
+											}
+										}
+										?>
+
+										<?php if ($first_image != ''): ?>
+											<img src="<?= $first_image ?>" alt="">
+										<?php else: ?>
+											<img src="<?= base_url('uploads/no-image.png') ?>" alt="">
+										<?php endif; ?>
 									</div>
 									<div class="info-bx">
 										<ul class="media-post">
