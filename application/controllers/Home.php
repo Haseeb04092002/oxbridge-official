@@ -1173,6 +1173,11 @@ class Home extends CI_Controller
 
 			$data['blogs'] = $blog;
 
+			echo "<pre>";
+			echo "<br>";
+			echo print_r($data);
+			die();
+
 			$this->load->view('pages/blog-details', $data);
 		} else {
 			redirect('Home/blogs');
