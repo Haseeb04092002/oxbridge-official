@@ -62,29 +62,6 @@
 										<h5 class="post-title"><?= $blogs->title ?></h5>
 										<p><?= $blogs->short_desc ?></p>
 										<div class="ttr-divider bg-gray"><i class="icon-dot c-square"></i></div>
-										<div class="widget_tag_cloud">
-											<h6>TAGS</h6>
-											<div class="tagcloud">
-												<a href="#">Design</a>
-												<a href="#">User interface</a>
-												<a href="#">SEO</a>
-												<a href="#">WordPress</a>
-												<a href="#">Development</a>
-												<a href="#">Joomla</a>
-												<a href="#">Design</a>
-												<a href="#">User interface</a>
-												<a href="#">SEO</a>
-												<a href="#">WordPress</a>
-												<a href="#">Development</a>
-												<a href="#">Joomla</a>
-												<a href="#">Design</a>
-												<a href="#">User interface</a>
-												<a href="#">SEO</a>
-												<a href="#">WordPress</a>
-												<a href="#">Development</a>
-												<a href="#">Joomla</a>
-											</div>
-										</div>
 										<!-- <div class="ttr-divider bg-gray"><i class="icon-dot c-square"></i></div>
 										<h6>SHARE </h6>
 										<ul class="list-inline contact-social-bx">
