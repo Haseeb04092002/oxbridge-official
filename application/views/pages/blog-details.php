@@ -19,23 +19,13 @@
 		<!-- Content -->
 		<div class="page-content bg-white">
 			<!-- inner page banner -->
-			<div class="page-banner ovbl-dark" style="background-image:url(assets/images/banner/banner2.jpg);">
+			<div class="pt-4 page-banner ovbl-dark" style="background-image:url(assets/images/banner/banner2.jpg);">
 				<div class="container">
 					<div class="page-banner-entry">
 						<h1 class="text-white">Blog Details</h1>
 					</div>
 				</div>
 			</div>
-			<!-- Breadcrumb row -->
-			<div class="breadcrumb-row">
-				<div class="container">
-					<ul class="list-inline">
-						<li><a href="#">Home</a></li>
-						<li>Blog Details</li>
-					</ul>
-				</div>
-			</div>
-			<!-- Breadcrumb row END -->
 			<div class="content-block">
 				<div class="section-area section-sp1">
 					<div class="container">
@@ -198,7 +188,7 @@
 							</div>
 							<!-- Left part END -->
 							<!-- Side bar start -->
-							<div class="col-lg-4 col-xl-4">
+							<div class="col-lg-4 col-xl-4 col-md-5 sticky-top">
 								<aside class="side-bar sticky-top">
 									<div class="widget">
 										<h6 class="widget-title">Search</h6>
@@ -216,88 +206,80 @@
 									<div class="widget recent-posts-entry">
 										<h6 class="widget-title">Recent Posts</h6>
 										<div class="widget-post-bx">
-											<div class="widget-post clearfix">
-												<div class="ttr-post-media"> <img src="assets/images/blog/recent-blog/pic1.jpg" width="200" height="143" alt=""> </div>
-												<div class="ttr-post-info">
-													<div class="ttr-post-header">
-														<h6 class="post-title"><a href="blog-details.html">This Story Behind Education Will Haunt You Forever.</a></h6>
+
+											<?php foreach ($blogs as $blog): ?>
+
+												<div class="widget-post clearfix">
+													<div class="ttr-post-media">
+														<?php
+														$first_image = '';
+
+														if (!empty($blog->media)) {
+															foreach ($blog->media as $m) {
+																if ($m->media_file_type == 'image') {
+																	$first_image = base_url($m->media_file_path . $m->media_file_name);
+																	break;
+																}
+															}
+														}
+														?>
+
+														<?php if ($first_image != ''): ?>
+															<img src="<?= $first_image ?>" alt="">
+														<?php else: ?>
+															<img src="<?= base_url('uploads/no-image.png') ?>" width="200" height="143" alt="">
+														<?php endif; ?>
 													</div>
-													<ul class="media-post">
-														<li><a href="#"><i class="fa fa-calendar"></i>Oct 23 2019</a></li>
-														<li><a href="#"><i class="fa fa-comments-o"></i>15 Comment</a></li>
-													</ul>
-												</div>
-											</div>
-											<div class="widget-post clearfix">
-												<div class="ttr-post-media"> <img src="assets/images/blog/recent-blog/pic2.jpg" width="200" height="160" alt=""> </div>
-												<div class="ttr-post-info">
-													<div class="ttr-post-header">
-														<h6 class="post-title"><a href="blog-details.html">What Will Education Be Like In The Next 50 Years?</a></h6>
+													<div class="ttr-post-info">
+														<div class="ttr-post-header">
+															<h6 class="post-title"><a href="blog-details.html"><?= $blog->title ?></a></h6>
+														</div>
+														<ul class="media-post">
+															<li><a href="#"><i class="fa fa-calendar"></i><?= date('d M Y', strtotime($blog->added_on)) ?></a></li>
+														</ul>
 													</div>
-													<ul class="media-post">
-														<li><a href="#"><i class="fa fa-calendar"></i>May 14 2019</a></li>
-														<li><a href="#"><i class="fa fa-comments-o"></i>23 Comment</a></li>
-													</ul>
 												</div>
-											</div>
-											<div class="widget-post clearfix">
-												<div class="ttr-post-media"> <img src="assets/images/blog/recent-blog/pic3.jpg" width="200" height="160" alt=""> </div>
-												<div class="ttr-post-info">
-													<div class="ttr-post-header">
-														<h6 class="post-title"><a href="blog-details.html">Eliminate Your Fears And Doubts About Education.</a></h6>
-													</div>
-													<ul class="media-post">
-														<li><a href="#"><i class="fa fa-calendar"></i>June 12 2019</a></li>
-														<li><a href="#"><i class="fa fa-comments-o"></i>27 Comment</a></li>
-													</ul>
-												</div>
-											</div>
+
+											<?php endforeach; ?>
+
 										</div>
 									</div>
 									<div class="widget widget-newslatter">
 										<h6 class="widget-title">Newsletter</h6>
 										<div class="news-box">
-											<p>Enter your e-mail and subscribe to our newsletter.</p>
-											<form class="subscription-form" action="http://educhamp.themetrades.com/demo/assets/script/mailchamp.php" method="post">
-												<div class="ajax-message"></div>
-												<div class="input-group">
-													<input name="dzEmail" required="required" type="email" class="form-control" placeholder="Your Email Address" />
-													<button name="submit" value="Submit" type="submit" class="btn black radius-no">
-														<i class="fa fa-paper-plane-o"></i>
-													</button>
-												</div>
-											</form>
+											<p>Contact Us on Whatsapp.</p>
+											+92 314 5310786
 										</div>
 									</div>
-									<div class="widget widget_gallery gallery-grid-4">
+									<!-- <div class="widget widget_gallery gallery-grid-4">
 										<h6 class="widget-title">Our Gallery</h6>
 										<ul>
 											<li>
-												<div><a href="#"><img src="assets/images/gallery/pic2.jpg" alt=""></a></div>
+												<div><a href="#"><img src="<?= base_url('assets/images/gallery/pic2.jpg') ?>" alt=""></a></div>
 											</li>
 											<li>
-												<div><a href="#"><img src="assets/images/gallery/pic1.jpg" alt=""></a></div>
+												<div><a href="#"><img src="<?= base_url('assets/images/gallery/pic1.jpg') ?>" alt=""></a></div>
 											</li>
 											<li>
-												<div><a href="#"><img src="assets/images/gallery/pic5.jpg" alt=""></a></div>
+												<div><a href="#"><img src="<?= base_url('assets/images/gallery/pic5.jpg') ?>" alt=""></a></div>
 											</li>
 											<li>
-												<div><a href="#"><img src="assets/images/gallery/pic7.jpg" alt=""></a></div>
+												<div><a href="#"><img src="<?= base_url('assets/images/gallery/pic7.jpg') ?>" alt=""></a></div>
 											</li>
 											<li>
-												<div><a href="#"><img src="assets/images/gallery/pic8.jpg" alt=""></a></div>
+												<div><a href="#"><img src="<?= base_url('assets/images/gallery/pic8.jpg') ?>" alt=""></a></div>
 											</li>
 											<li>
-												<div><a href="#"><img src="assets/images/gallery/pic9.jpg" alt=""></a></div>
+												<div><a href="#"><img src="<?= base_url('assets/images/gallery/pic9.jpg') ?>" alt=""></a></div>
 											</li>
 											<li>
-												<div><a href="#"><img src="assets/images/gallery/pic3.jpg" alt=""></a></div>
+												<div><a href="#"><img src="<?= base_url('assets/images/gallery/pic3.jpg') ?>" alt=""></a></div>
 											</li>
 											<li>
-												<div><a href="#"><img src="assets/images/gallery/pic4.jpg" alt=""></a></div>
+												<div><a href="#"><img src="<?= base_url('assets/images/gallery/pic4.jpg') ?>" alt=""></a></div>
 											</li>
 										</ul>
-									</div>
+									</div> -->
 									<div class="widget widget_tag_cloud">
 										<h6 class="widget-title">Tags</h6>
 										<div class="tagcloud">
@@ -334,7 +316,7 @@
 		$this->load->view('commons/footer');
 		?>
 	</div>
-	
+
 </body>
 
 </html>

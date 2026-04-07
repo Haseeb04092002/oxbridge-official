@@ -26,7 +26,6 @@
 					</div>
 				</div>
 			</div>
-			<!-- Breadcrumb row END -->
 			<div class="content-block">
 				<div class="section-area section-sp1">
 					<div class="container">
