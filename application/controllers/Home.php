@@ -1155,6 +1155,25 @@ class Home extends CI_Controller
 		redirect('Home/blogs');
 	}
 
+	public function blog_details($blog_id)
+	{
+		$this->db->where('blog_id', $blog_id);
+		$blog = $this->db->get('tbl_blogs')->row();
+
+		if ($blog) {
+			$this->db->where('blog_id', $blog_id);
+			$media = $this->db->get('tbl_blog_media')->result();
+
+			$blog->media = $media;
+
+			$data['blog'] = $blog;
+
+			$this->load->view('pages/blog-details', $data);
+		} else {
+			redirect('Home/blogs');
+		}
+	}
+
 	public function course_details($course_name)
 	{
 		$course_data = array();

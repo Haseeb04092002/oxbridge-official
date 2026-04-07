@@ -67,7 +67,7 @@
 													<!-- DATE -->
 													<ul class="media-post">
 														<li>
-															<a href="#">
+															<a href="<?= site_url('Home/blog_details/' . $blog->blog_id) ?>">
 																<i class="fa fa-calendar"></i>
 																<?= date('d M Y', strtotime($blog->added_on)) ?>
 															</a>
