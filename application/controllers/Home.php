@@ -1161,6 +1161,11 @@ class Home extends CI_Controller
 		$blog = $this->db->get('tbl_blogs')->row();
 
 		if ($blog) {
+			// $this->db->where('blog_id', $blog_id);
+			// $media = $this->db->get('tbl_blog_media')->result();
+
+			// $blog->media = $media;
+
 			$this->db->where('blog_id', $blog_id);
 			$media = $this->db->get('tbl_blog_media')->result();
 
