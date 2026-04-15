@@ -9,7 +9,7 @@
             <div class="container clearfix">
                 <!-- Header Logo ==== -->
                 <div class="menu-logo">
-                    <a href="index.html"><img src="<?= base_url('assets/images/oes-logo.png') ?>" alt=""></a>
+                    <a href="<?= base_url('Home'); ?>"><img src="<?= base_url('assets/images/oes-logo.png') ?>" alt=""></a>
                 </div>
                 <!-- Mobile Nav Button ==== -->
                 <button class="navbar-toggler collapsed menuicon justify-content-end" type="button" data-toggle="collapse" data-target="#menuDropdown" aria-controls="menuDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,7 +20,7 @@
                 <!-- Navigation Menu ==== -->
                 <div class="menu-links navbar-collapse collapse justify-content-center" id="menuDropdown">
                     <!-- <div class="menu-logo">
-                        <a href="index.html"><img src="<?= base_url('assets/images/oes-logo.png') ?>" alt=""></a>
+                        <a href="<?= base_url('Home'); ?>"><img src="<?= base_url('assets/images/oes-logo.png') ?>" alt=""></a>
                     </div> -->
                     <ul class="nav navbar-nav">
                         <li class="active">
@@ -36,7 +36,7 @@
                         </li>
 
                         <li>
-                            <a href="<?= base_url('Home/coming_soon'); ?>">WorkBooks</a>
+                            <a href="https://store.oxbridgeeducationalservices.com/">WorkBooks</a>
                         </li>
                         
                         <li>
@@ -50,7 +50,7 @@
                                 <li class="add-menu-left">
                                     <h5 class="menu-adv-title">Services</h5>
                                     <ul>
-                                        <li><a href="<?= base_url('Home/coming_soon'); ?>">WorkBooks</a></li>
+                                        <li><a href="https://store.oxbridgeeducationalservices.com/">WorkBooks</a></li>
                                         <li><a href="<?= base_url('Home/coming_soon'); ?>">Montessori Courses</a></li>
                                         <li><a href="<?= base_url('Home/courses'); ?>">Computer Courses</a></li>
                                         <li><a href="<?= base_url('Home/coming_soon'); ?>">Home Schooling</a></li>

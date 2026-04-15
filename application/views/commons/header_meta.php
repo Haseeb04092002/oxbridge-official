@@ -20,7 +20,7 @@
 <meta property="og:url" content="<?= base_url() ?>" />
 
 <!-- FAVICONS ICON ============================================= -->
-<link rel="icon" href="<?= base_url('assets/images/favicon.ico') ?>" type="image/x-icon" />
+<link rel="icon" href="<?= base_url('assets/images/oes-logo.png') ?>" type="image/x-icon" />
 <link rel="shortcut icon" type="image/x-icon" href="<?= base_url('assets/images/oes-logo.png') ?>" />
 
 <!-- PAGE TITLE HERE ============================================= -->
