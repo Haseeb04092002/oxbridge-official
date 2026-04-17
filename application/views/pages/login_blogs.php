@@ -19,18 +19,11 @@
         ?>
 
         <div class="mt-5 pt-5 page-content bg-white">
-            <div class="page-banner ovbl-dark" style="background-image:url(assets/images/banner/banner3.jpg);">
-                <div class="container">
-                    <div class="page-banner-entry">
-                        <h1 class="text-white">Enter Password To Add Blogs</h1>
-                    </div>
-                </div>
-            </div>
 
             <div class="page-banner contact-page section-sp2">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-12 col-md-12">
+                        <div class="col-lg-10 col-md-10 mx-auto justify-content-center">
                             <form class="contact-bx"
                               method="post"
                               action="<?= base_url('Home/check_blog_login') ?>">
