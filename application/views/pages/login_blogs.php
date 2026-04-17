@@ -27,7 +27,7 @@
                             <?php 
                             if(!empty($message) && isset($message)){
                             ?>
-                            <h1><?= $message ?></h1>
+                            <h4 class="text-danger"><?= $message ?></h4>
                             <?php
                             } 
                             ?>
