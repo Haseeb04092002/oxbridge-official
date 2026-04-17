@@ -1018,6 +1018,11 @@ class Home extends CI_Controller
 		$this->load->view('pages/add_blogs');
 	}
 
+	public function login_blogs()
+	{
+		$this->load->view('pages/login_blogs');
+	}
+
 	public function save_blog()
 	{
 		$title      = $this->input->post('title') ?? '';
