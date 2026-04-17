@@ -24,6 +24,13 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-10 col-md-10 mx-auto justify-content-center">
+                            <?php 
+                            if(!empty($message) && isset($message)){
+                            ?>
+                            <h1><?= $message ?></h1>
+                            <?php
+                            } 
+                            ?>
                             <form class="contact-bx"
                               method="post"
                               action="<?= base_url('Home/check_blog_login') ?>">

@@ -1,5 +1,5 @@
 <!-- Footer ==== -->
-<footer>
+<footer class="d-none">
   <div class="footer-top d-none">
     <!-- <div class="pt-exebar">
       <div class="container">
