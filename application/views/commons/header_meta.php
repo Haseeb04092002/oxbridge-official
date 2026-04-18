@@ -15,13 +15,9 @@
 <!-- OG / Social Media -->
 <meta property="og:title" content="Oxbridge | OES Educational Services" />
 <meta property="og:description" content="Join Oxbridge | OES Educational Services for comprehensive learning programs, coaching, and academic excellence. Enroll today to boost your knowledge and skills." />
-<meta property="og:image" content="<?= base_url('assets/images/oes-logo.png') ?>" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="<?= base_url() ?>" />
 
 <!-- FAVICONS ICON ============================================= -->
-<link rel="icon" href="<?= base_url('assets/images/oes-logo.png') ?>" type="image/x-icon" />
-<link rel="shortcut icon" type="image/x-icon" href="<?= base_url('assets/images/oes-logo.png') ?>" />
 
 <!-- PAGE TITLE HERE ============================================= -->
 <title>Oxbridge | OES Educational Services</title>
