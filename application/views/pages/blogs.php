@@ -122,43 +122,26 @@
 									</div>
 									<div class="widget recent-posts-entry">
 										<h6 class="widget-title">Recent Posts</h6>
-										<div class="widget-post-bx">
+										<div class="widget-post-bx" id="blogContainer"> <?php foreach ($blogs as $blog): ?>
+												<div class="widget-post clearfix recent-post-item"
+													data-title="<?= strtolower($blog->title) ?>"
+													data-tags="<?= strtolower($blog->keywords) ?>">
 
-											<?php foreach ($blogs as $blog): ?>
-
-												<div class="widget-post clearfix">
 													<div class="ttr-post-media">
-														<?php
-														$first_image = '';
-
-														if (!empty($blog->media)) {
-															foreach ($blog->media as $m) {
-																if ($m->media_file_type == 'image') {
-																	$first_image = base_url($m->media_file_path . $m->media_file_name);
-																	break;
-																}
-															}
-														}
-														?>
-
-														<?php if ($first_image != ''): ?>
-															<img src="<?= $first_image ?>" alt="">
-														<?php else: ?>
-															<img src="<?= base_url('uploads/no-image.png') ?>" width="200" class="img-fluid w-100" style="height:150px; object-fit:cover;" alt="">
-														<?php endif; ?>
 													</div>
 													<div class="ttr-post-info">
 														<div class="ttr-post-header">
-															<h6 class="post-title"><a href="<?= site_url('Home/blog_details/' . $blog->blog_id) ?>"><?= $blog->title ?></a></h6>
+															<h6 class="post-title">
+																<a href="<?= site_url('Home/blog_details/' . $blog->blog_id) ?>"><?= $blog->title ?></a>
+															</h6>
 														</div>
 														<ul class="media-post">
-															<li><a href="<?= site_url('Home/blog_details/' . $blog->blog_id) ?>"><i class="fa fa-calendar"></i><?= date('d M Y', strtotime($blog->added_on)) ?></a></li>
+															<li><i class="fa fa-calendar"></i><?= date('d M Y', strtotime($blog->added_on)) ?></li>
 														</ul>
 													</div>
 												</div>
-
 											<?php endforeach; ?>
-
+											<div id="noResults" style="display:none; padding: 20px; text-align: center;">No posts found.</div>
 										</div>
 									</div>
 									<div class="widget widget-newslatter">
@@ -234,6 +217,54 @@
 		$this->load->view('commons/footer');
 		?>
 	</div>
+
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			// Target the input field inside your search box
+			$('.search-bx input[name="text"]').on('keyup', function() {
+				var searchTerm = $(this).val().toLowerCase();
+				var searchWords = searchTerm.split(' ').filter(function(i) {
+					return i !== "";
+				});
+				var visibleCount = 0;
+
+				$('.recent-post-item').each(function() {
+					var title = $(this).data('title');
+					var tags = $(this).data('tags');
+					var combinedText = title + " " + tags;
+					var isMatch = true;
+
+					// Word-by-word matching: Every word in search must be in the post
+					searchWords.forEach(function(word) {
+						if (combinedText.indexOf(word) === -1) {
+							isMatch = false;
+						}
+					});
+
+					if (isMatch) {
+						$(this).show();
+						visibleCount++;
+					} else {
+						$(this).hide();
+					}
+				});
+
+				// Show "No Results" message if nothing matches
+				if (visibleCount === 0 && searchTerm !== "") {
+					$('#noResults').show();
+				} else {
+					$('#noResults').hide();
+				}
+			});
+
+			// Prevent form from submitting and refreshing the page
+			$('.search-bx form').on('submit', function(e) {
+				e.preventDefault();
+			});
+		});
+	</script>
 
 </body>
 

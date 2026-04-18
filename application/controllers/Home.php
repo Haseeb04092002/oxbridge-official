@@ -1072,6 +1072,10 @@ class Home extends CI_Controller
 			'is_deleted'      => 0,
 		);
 
+		if($this->session->user_data('is_blog_login') !== true){
+			redirect('Home/login_blogs');
+		}
+
 		$this->db->insert('tbl_blogs', $data);
 		$blog_id = $this->db->insert_id();
 
