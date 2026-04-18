@@ -18,8 +18,8 @@
 <meta property="og:type" content="website" />
 
 <!-- FAVICONS ICON ============================================= -->
- <link rel="icon" href="<?= base_url('assets/images/oes-logo.png') ?>" type="image/png" sizes="144x144" />
-<link rel="apple-touch-icon" href="<?= base_url('assets/images/oes-logo.png') ?>">
+ <link rel="icon" href="<?= base_url('assets/images/oes-logo-2.png') ?>" type="image/png" sizes="144x144" />
+<link rel="apple-touch-icon" href="<?= base_url('assets/images/oes-logo-2.png') ?>">
 
 <!-- PAGE TITLE HERE ============================================= -->
 <title>Oxbridge | OES Educational Services</title>
