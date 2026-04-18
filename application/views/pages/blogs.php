@@ -124,8 +124,8 @@
 										<h6 class="widget-title">Recent Posts</h6>
 										<div class="widget-post-bx" id="blogContainer"> <?php foreach ($blogs as $blog): ?>
 												<div class="widget-post clearfix recent-post-item"
-													data-title="<?= strtolower($blog->title) ?>"
-													data-tags="<?= strtolower($blog->keywords) ?>">
+													data-title="<?= strtolower($blog->title ?? '') ?>"
+													data-tags="<?= strtolower($blog->keywords ?? '') ?>">
 
 													<div class="ttr-post-media">
 													</div>
