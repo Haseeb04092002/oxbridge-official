@@ -23,6 +23,7 @@
 				<div class="container">
 					<div class="page-banner-entry">
 						<h1 class="text-white">Blogs and Articles</h1>
+						<a href="<?= site_url("Home/login_blogs") ?>" class="btn btn-sm btn-primary">Add Blogs</a>
 					</div>
 				</div>
 			</div>

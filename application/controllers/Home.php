@@ -1018,6 +1018,21 @@ class Home extends CI_Controller
 		$this->load->view('pages/add_blogs');
 	}
 
+	public function login_blogs()
+	{
+		$this->load->view('pages/login_blogs');
+	}
+
+	public function check_blog_login()
+	{
+		$pass = $this->input->post('password')??'';
+		if(!empty($pass) && isset($pass) && $pass === "oxbridge@1122"){
+			$this->session->set_userdata('is_blog_login', true);
+			$this->load->view('pages/add_blogs');
+		}
+		$this->load->view('pages/login_blogs', ['message'=>'Invalid Password! Try Aagain']);
+	}
+
 	public function save_blog()
 	{
 		$title      = $this->input->post('title') ?? '';
