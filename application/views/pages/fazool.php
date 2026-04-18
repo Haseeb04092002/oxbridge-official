@@ -1,16 +1,23 @@
-CREATE TABLE tbl_blogs (
-    blog_id INT AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(255) DEFAULT NULL
-    category VARCHAR(100) DEFAULT NULL,
-    tags TEXT DEFAULT NULL,
-    author VARCHAR(100) DEFAULT NULL,
-    short_desc TEXT DEFAULT NULL,
-    content LONGTEXT DEFAULT NULL
-);
+<div class="widget-post-bx" id="blogContainer"> <?php foreach ($blogs as $blog): ?>
+        <div class="widget-post clearfix recent-post-item"
+            data-title="<?= strtolower($blog->title ?? '') ?>"
+            data-tags="<?= strtolower($blog->keywords ?? '') ?>">
 
-CREATE TABLE tbl_blog_images (
-    blog_media_id INT AUTO_INCREMENT PRIMARY KEY,
-    blog_id INT DEFAULT NULL,
-    media_file_name VARCHAR(100) DEFAULT NULL,
-    media_file_path VARCHAR(255) DEFAULT NULL
-);
+            <div class="ttr-post-media">
+            </div>
+            <div class="ttr-post-info">
+                <div class="ttr-post-header">
+                    <h6 class="post-title">
+                        <a href="<?= site_url('Home/blog_details/' . $blog->blog_id) ?>"><?= $blog->title ?></a>
+                    </h6>
+                </div>
+                <ul class="media-post">
+                    <li><i class="fa fa-calendar"></i><?= date('d M Y', strtotime($blog->added_on)) ?></li>
+                </ul>
+            </div>
+        </div>
+    <?php endforeach; ?>
+    <div id="noResults" style="display:none; padding: 20px; text-align: center;">No posts found.</div>
+</div>
+
+
