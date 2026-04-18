@@ -161,6 +161,8 @@
 
 											<?php endforeach; ?>
 
+											<div id="noResults" style="display:none; padding: 20px; text-align: center;">No posts found.</div>
+
 										</div>
 									</div>
 									<div class="widget widget-newslatter">
